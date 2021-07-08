@@ -29,6 +29,11 @@ export class UsersController {
     return this.usersService.findById(id);
   }
 
+  @Delete(':username')
+  deleteOne(@Param('username') username: string): Promise<boolean> {
+    return this.usersService.deleteOne(username);
+  }
+
   @Delete(':id')
   deleteById(@Param('id') id: string): Promise<boolean> {
     return this.usersService.deleteById(id);

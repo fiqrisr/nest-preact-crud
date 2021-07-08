@@ -33,11 +33,22 @@ export class UsersService {
   }
 
   async findOne(username: string): Promise<User> {
-    return this.usersRepository.findOne({ where: { username } });
+    return this.usersRepository.findOne({ username });
   }
 
   async findById(id: string): Promise<User> {
     return this.usersRepository.findOne({ id });
+  }
+
+  async deleteOne(username: string): Promise<boolean> {
+    const user = await this.usersRepository.findOne({ username });
+
+    if (user) {
+      await this.usersRepository.remove(user);
+      return true;
+    }
+
+    return false;
   }
 
   async deleteById(id: string): Promise<boolean> {
