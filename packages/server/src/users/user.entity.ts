@@ -1,16 +1,18 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ nullable: false, unique: true })
-  username: string;
+  username!: string;
 
   @Column({ nullable: false })
-  fullName: string;
+  fullName!: string;
 
-  @Column({ nullable: false, select: false })
-  password: string;
+  @Exclude()
+  @Column({ nullable: false })
+  password!: string;
 }
