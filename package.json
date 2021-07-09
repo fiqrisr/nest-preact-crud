@@ -1,11 +1,33 @@
 {
-    "name": "nest-preact-crud",
-    "version": "1.0.0",
-    "main": "index.js",
-    "license": "MIT",
-    "private": true,
-    "workspaces": {
-        "packages": ["packages/*"],
-        "nohoist": ["**/typeorm/**", "**/typeorm"]
-    }
+  "name": "nest-preact-crud",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start:dev": "lerna run start:dev --parallel",
+    "start:dev:server": "yarn --cwd packages/server start:dev",
+    "start:dev:web": "yarn --cwd packages/web start:dev",
+    "build": "lerna run build",
+    "lint": "eslint \"packages/**/{src,apps,libs,test}/**/*.{js,ts,jsx,tsx}\" --fix",
+    "format": "prettier --write \"packages/**/{src,test}/**/*.{js,ts,jsx,tsx}\""
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/typeorm/**",
+      "**/typeorm"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.3.2"
+  }
 }

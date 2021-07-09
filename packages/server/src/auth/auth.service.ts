@@ -1,7 +1,7 @@
 import {
   Injectable,
   NotFoundException,
-  UnauthorizedException,
+  UnauthorizedException
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
@@ -14,7 +14,7 @@ import { LoginDto } from './dto/login.dto';
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
-    private readonly jwtService: JwtService,
+    private readonly jwtService: JwtService
   ) {}
 
   async validateUser(loginDto: LoginDto): Promise<User> {
@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   async register(
-    registerDto: RegisterDto,
+    registerDto: RegisterDto
   ): Promise<{ access_token: string; id: string; username: string }> {
     const user = await this.usersService.create(registerDto);
     const payload = { username: user.username, sub: user.id };
@@ -38,12 +38,12 @@ export class AuthService {
     return {
       access_token: this.jwtService.sign(payload),
       id: user.id,
-      username: user.username,
+      username: user.username
     };
   }
 
   async login(
-    loginDto: LoginDto,
+    loginDto: LoginDto
   ): Promise<{ access_token: string; id: string; username: string }> {
     const user = await this.validateUser(loginDto);
     const payload = { username: user.username, sub: user.id };
@@ -51,7 +51,7 @@ export class AuthService {
     return {
       access_token: this.jwtService.sign(payload),
       id: user.id,
-      username: user.username,
+      username: user.username
     };
   }
 

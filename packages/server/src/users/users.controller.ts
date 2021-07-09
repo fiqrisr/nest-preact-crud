@@ -6,7 +6,7 @@ import {
   Get,
   Param,
   Post,
-  UseInterceptors,
+  UseInterceptors
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './user.entity';
@@ -19,7 +19,7 @@ export class UsersController {
 
   @Post()
   create(
-    @Body() createUserDto: CreateUserDto,
+    @Body() createUserDto: CreateUserDto
   ): Promise<{ id: string; username: string; fullName: string }> {
     return this.usersService.create(createUserDto);
   }

@@ -13,14 +13,14 @@ import { UsersModule } from './users/users.module';
       useFactory: async () =>
         Object.assign(await getConnectionOptions(), {
           autoLoadEntities: true,
-          synchronize: true,
-        }),
+          synchronize: true
+        })
     }),
     ConfigModule.forRoot({ isGlobal: true }),
     AuthModule,
-    UsersModule,
+    UsersModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService]
 })
 export class AppModule {}
