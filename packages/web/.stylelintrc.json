@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "indentation": "tab",
+    "number-leading-zero": null,
+    "order/order": ["custom-properties", "declarations"],
+    "max-nesting-depth": null,
+    "selector-no-qualifying-type": null,
+    "selector-max-id": 2
+  }
+}

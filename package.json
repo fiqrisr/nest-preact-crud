@@ -18,7 +18,9 @@
     ],
     "nohoist": [
       "**/typeorm/**",
-      "**/typeorm"
+      "**/typeorm",
+      "**/webpack/**",
+      "**/vite/**"
     ]
   },
   "devDependencies": {
