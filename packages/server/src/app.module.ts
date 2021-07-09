@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { AppController } from './app.controller';
@@ -15,6 +16,7 @@ import { UsersModule } from './users/users.module';
           synchronize: true,
         }),
     }),
+    ConfigModule.forRoot({ isGlobal: true }),
     AuthModule,
     UsersModule,
   ],
