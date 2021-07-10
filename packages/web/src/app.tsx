@@ -1,20 +1,14 @@
-import { Logo } from './logo';
+import Router, { Route } from 'preact-router';
+import HomePage from './pages/Home';
+import LoginPage from './pages/Login';
 
-export function App() {
+const App = () => {
   return (
-    <>
-      <Logo />
-      <p>Hello Vite + Preact!</p>
-      <p>
-        <a
-          class="link"
-          href="https://preactjs.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Preact
-        </a>
-      </p>
-    </>
+    <Router>
+      <Route path="/" component={HomePage} />
+      <Route path="auth/login" component={LoginPage} />
+    </Router>
   );
-}
+};
+
+export default App;

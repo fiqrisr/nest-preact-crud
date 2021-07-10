@@ -1,0 +1,14 @@
+.loginPage {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin-top: 150px;
+
+	form > div {
+		margin-bottom: 20px;
+	}
+
+	.label {
+		padding: 2px 0;
+	}
+}
