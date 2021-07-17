@@ -7,47 +7,47 @@ import { User } from './user.entity';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectRepository(User) private usersRepository: Repository<User>
-  ) {}
+	constructor(
+		@InjectRepository(User) private usersRepository: Repository<User>
+	) {}
 
-  async create(
-    createUserDto: CreateUserDto
-  ): Promise<{ id: string; username: string; fullName: string }> {
-    const user = new User();
-    user.username = createUserDto.username;
-    user.fullName = createUserDto.fullName;
-    user.password = await argon.hash(createUserDto.password);
+	async create(
+		createUserDto: CreateUserDto
+	): Promise<{ id: string; username: string; fullName: string }> {
+		const user = new User();
+		user.username = createUserDto.username;
+		user.fullName = createUserDto.fullName;
+		user.password = await argon.hash(createUserDto.password);
 
-    await this.usersRepository.save(user);
+		await this.usersRepository.save(user);
 
-    return {
-      id: user.id,
-      username: user.username,
-      fullName: user.fullName
-    };
-  }
+		return {
+			id: user.id,
+			username: user.username,
+			fullName: user.fullName
+		};
+	}
 
-  async findAll(): Promise<User[]> {
-    return this.usersRepository.find();
-  }
+	async findAll(): Promise<User[]> {
+		return this.usersRepository.find();
+	}
 
-  async findById(id: string): Promise<User> {
-    return this.usersRepository.findOne({ id });
-  }
+	async findById(id: string): Promise<User> {
+		return this.usersRepository.findOne({ id });
+	}
 
-  async findByUsername(username: string): Promise<User> {
-    return this.usersRepository.findOne({ username });
-  }
+	async findByUsername(username: string): Promise<User> {
+		return this.usersRepository.findOne({ username });
+	}
 
-  async deleteById(id: string): Promise<boolean> {
-    const user = await this.usersRepository.findOne({ id });
+	async deleteById(id: string): Promise<boolean> {
+		const user = await this.usersRepository.findOne({ id });
 
-    if (user) {
-      await this.usersRepository.remove(user);
-      return true;
-    }
+		if (user) {
+			await this.usersRepository.remove(user);
+			return true;
+		}
 
-    return false;
-  }
+		return false;
+	}
 }

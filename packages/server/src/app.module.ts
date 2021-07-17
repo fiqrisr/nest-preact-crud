@@ -8,19 +8,19 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRootAsync({
-      useFactory: async () =>
-        Object.assign(await getConnectionOptions(), {
-          autoLoadEntities: true,
-          synchronize: true
-        })
-    }),
-    ConfigModule.forRoot({ isGlobal: true }),
-    AuthModule,
-    UsersModule
-  ],
-  controllers: [AppController],
-  providers: [AppService]
+	imports: [
+		TypeOrmModule.forRootAsync({
+			useFactory: async () =>
+				Object.assign(await getConnectionOptions(), {
+					autoLoadEntities: true,
+					synchronize: true
+				})
+		}),
+		ConfigModule.forRoot({ isGlobal: true }),
+		AuthModule,
+		UsersModule
+	],
+	controllers: [AppController],
+	providers: [AppService]
 })
 export class AppModule {}

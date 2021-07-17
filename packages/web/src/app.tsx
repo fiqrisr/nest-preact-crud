@@ -1,14 +1,13 @@
-import Router, { Route } from 'preact-router';
-import HomePage from './pages/Home';
-import LoginPage from './pages/Login';
+import Router from './router';
+import Navbar from './components/Navbar';
 
 const App = () => {
-  return (
-    <Router>
-      <Route path="/" component={HomePage} />
-      <Route path="auth/login" component={LoginPage} />
-    </Router>
-  );
+	return (
+		<>
+			<Navbar />
+			<Router />
+		</>
+	);
 };
 
 export default App;
